@@ -3,7 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-html {
+ html {
   box-sizing: border-box;
 }
 *, *:before, *:after {
@@ -23,3 +23,17 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ body {
+  font-family: 'Source Sans Pro', sans-serif;
+  padding-top: 5em;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+}
+
+section {
+  padding: 4em 0 0;
+}
