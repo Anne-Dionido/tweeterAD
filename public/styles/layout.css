@@ -1,13 +1,29 @@
-/*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
- html {
+html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+:root {
+  --primary-font: 'Source Sans Pro';
+  --secondary-font: 'Bungee';
+  --primary-font-color: #545149;
+  --secondary-font-color: #ffffff;
+  --primary-color: #001524;
+  --secondary-color: rgb(255, 107, 53);
+  --primary-bg-color: #001524;
+  --secondary-bg-color: #f4f1ec;
+  --primary-box-shadow: 0 0 5px 4px rgb(255 107 53 / 60%);
 }
 
 /*
@@ -15,25 +31,16 @@
  */
 
 body {
-  color: #545149;
-  background-color: #f4f1ec;
-  font-size: 24px;
+  color: var(--primary-font-color);
+  background-color: var(--secondary-bg-color);
+  font-family: var(--primary-font, sans-serif);
+  font-size: 20px;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
-
- body {
-  font-family: 'Source Sans Pro', sans-serif;
-  padding-top: 5em;
-}
-
-main {
+main.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   width: 90%;
   margin: auto;
-}
-
-section {
-  padding: 4em 0 0;
 }

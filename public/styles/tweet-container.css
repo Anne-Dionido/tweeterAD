@@ -1,0 +1,75 @@
+article {
+  display: flex;
+  flex-direction: column;
+  border: 5px black solid;
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-family: Source Sans Pro, Sans-Serif;
+  word-wrap: break-word;
+}
+
+article:hover {
+  box-shadow: 5px 10px #888888;
+  text-shadow: 0.2px 0.2px rgb(79, 79, 136);
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin: 3%;
+  margin-top: 0;
+  font-family: Source Sans Pro, Sans-Serif;
+  font-size: 0.75em;
+  border-top: 5px black solid;
+}
+
+.tweet-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: hwb(37 93% 4%);
+  font-family: Bungee, sans-serif;
+  font-size: 0.75em;
+  margin: 3%;
+}
+
+.name-avatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-family: Source Sans Pro, Sans-Serif;
+  font-size: 20px;
+}
+
+.handle {
+  font-size: 20px;
+}
+
+.tweet-text {
+  padding-inline: 30px;
+  font-size: 0.75em;
+  word-wrap: break-word;
+}
+
+.client-name {
+  padding: 20px;
+}
+
+.image-class {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  color: #4056A1;
+  padding-inline: 5px;
+}
+
+.fa-solid:hover {
+  color: gold;
+}
+
+.fas:hover {
+  color: gold;
+}

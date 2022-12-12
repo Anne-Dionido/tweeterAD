@@ -1,36 +1,21 @@
-$(() => {
-  const handleEnterKey = (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-    }
-  };
+$(document).ready(function() {
 
-  const getCounterText = (maxTweetLength, currentTweetLength) => {
-    const counterValue = maxTweetLength - currentTweetLength;
-    return counterValue;
-  }
+  $("#tweet-text").on("input", function() {
+    const maxLength = 140;
+    const tweetLength = $(this).val().length;
+    const textRemaining = maxLength - tweetLength;
 
-  const isTweetLengthExceeded = (maxTweetLength, currentTweetLength) => {
-    isExceeded = (maxTweetLength - currentTweetLength) < 0;
-    return isExceeded;
-  }
+    let counter = $('.maxCounter');
+    counter.html(textRemaining);
+    let currentCount = $('.currentCounter');
+    currentCount.html(maxLength);
 
-  const tweetInputElement = $('#tweet-text');
-  const tweetInputParent = $(tweetInputElement).parent();
-  const counterElement = $(tweetInputParent).find('.counter');
-  const maxTweetLength = 140;
-  $(counterElement).text(maxTweetLength);
-  $(tweetInputElement).on('keyup', function(event) {
-    handleEnterKey(event);
-    const currentLength = this.value.length;
-    const counterText = getCounterText(maxTweetLength, currentLength);
-    $(counterElement).text(counterText);
-    if (isTweetLengthExceeded(maxTweetLength, currentLength)) {
-      $(counterElement).removeClass('danger').addClass('danger');
+    if (textRemaining < 0) {
+      counter.css('color', '#FF0000');
+      currentCount.css('color', '#FF0000');
     } else {
-      $(counterElement).removeClass('danger');
+      counter.css('color', '#000000');
+      currentCount.css('color', '#000000');
     }
-
-  })
-
+  });
 });

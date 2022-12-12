@@ -1,130 +1,103 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 $(document).ready(function() {
+  const renderTweets = function(tweets) {
+    const sortedData = tweets.sort((a, b) => b.created_at - a.created_at);
+    $("#tweets-container").empty().show("slow");
 
-  const renderTweets = function(tweets, outputElement) {
-    $(outputElement).empty();
-    $.each(tweets, (index, tweetObject) => $(outputElement)
-      .prepend(createTweetElement(tweetObject))
-    );
+    for (const index in sortedData) {
+      const username = sortedData[index].user.name;
+      const avatar = sortedData[index].user.avatars;
+      const handle = sortedData[index].user.handle;
+      const text = sortedData[index].content.text;
+      const createdAt = timeago.format(sortedData[index].created_at);
+
+      const tweet = {
+        username,
+        avatar,
+        handle,
+        text,
+        createdAt
+      };
+
+      const tweetElement = createTweetElement(tweet);
+      $("#tweets-container").append(tweetElement);
+    }
   };
-
-  const createTweetElement  = (tweetObject) => {
-    const ageOutput = timeago.format(tweetObject.created_at);
-    const $userImage = $('<img>')
-    .addClass('user-image')  
-    .attr({
-      'src': tweetObject.user.avatars,
-      'alt': `Profile image for ${tweetObject.user.name}`
-    });
-    const $userName = $('<p>')
-      .addClass('user-name')
-      .text(tweetObject.user.name);
-    const $userHandle = $('<p>')
-      .addClass('user-handle')
-      .text(tweetObject.user.handle);
-    const $contentText = $('<p>')
-      .addClass('content-text')  
-      .text(tweetObject.content.text);
-    
-    const $article = 
-    `<article class="tweet">
+  
+  const createTweetElement = function(tweet) {
+    let $tweet = `
+    <article class="tweet">
       <header>
-        ${$userImage.prop('outerHTML')}
-        ${$userName.prop('outerHTML')}
-        ${$userHandle.prop('outerHTML')}
+        <div class="left-box">
+          <img src="${tweet.avatar}">
+          <div class="tweet-name">
+            ${tweet.username}
+          </div>
+        </div>
+        <div class="handle">
+          ${tweet.handle}
+        </div>
       </header>
-      ${$contentText.prop('outerHTML')}
+      <main>
+        <div class="tweet-text">
+          
+          ${$("<div>").text(tweet.text).html()}
+        </div>
+        <div class="tweet-divider"></div>
+      </main>
       <footer>
-        <p class="tweet-age">${ageOutput}</p>
-        <p class="actions">
-          <a href="#" title="Report tweet"><i class="fa-solid fa-flag"></i></a>
-          <a href="#" title="Retweet"><i class="fa-solid fa-retweet"></i></a>
-          <a href="#" title="Save tweet"><i class="fa-solid fa-heart"></i></a>
-        </p>
+        <div>
+         ${tweet.createdAt}
+        </div>
+        <div class="tweet-options">
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
       </footer>
-    </article>`
-
-    return $article;
+    </article>
+          `;
+    return $tweet;
   };
 
-  const loadTweets = (outputElement) => {
-    $.ajax('/tweets', { method: 'GET' })
-    .then((tweets) => {
-      renderTweets(tweets, outputElement);
-    });
-  };
-
-  loadTweets('#tweets-container');
-
-  const validate = {
-    minLength: {
-      isValid: false,
-      message: null,
-      eval: function(input) {
-        if (!input) {
-          this.isValid = false;
-          this.message = 'Please say something in your tweet!';
-          return this.isValid;
-        }
-        this.isValid = true;
-        return this.isValid;
-      },
-    },
-    maxLength: {
-      isValid: false,
-      message: null,
-      eval: function(input, maxLength) {
-        if (input.length > maxLength) {
-          this.isValid = false;
-          this.message = `Tweets cannot exceed ${maxLength} characters`;
-          return this.isValid
-        }
-        this.isValid = true;
-        return this.isValid;
-      },
-    },
-    eval: function(input, maxLength) {
-      this.minLength.eval(input);
-      this.maxLength.eval(input, maxLength);
-    },
-  };
-
-  Object.defineProperty(validate, 'eval', { enumerable: false });
-  Object.defineProperty(validate.minLength, 'eval', { enumerable: false });
-  Object.defineProperty(validate.maxLength, 'eval', { enumerable: false });
-
-  const $newTweetForm = $('#new-tweet');
-  $newTweetForm.on('submit', (event) => {
-    event.preventDefault();
-    const tweetData = $newTweetForm.serialize();
-    const $tweetInputElement = ('#tweet-text');
-    const tweetInputValue = $($tweetInputElement).val();
-    const $errorElement = $("<div>").addClass('error');
-    validate.eval(tweetInputValue, 140);
-    $('.error').remove();
-    if (validate.minLength.isValid === false) {
-      $errorElement.text(validate.minLength.message)
-        .insertBefore($tweetInputElement)
-        .hide()
-        .show('slow');
-      return;
-    }
-    if (validate.maxLength.isValid === false) {
-      $errorElement.text(validate.maxLength.message)
-        .insertBefore($tweetInputElement)
-        .hide()
-        .show('slow');
-      return;
-    }
-    $.post('/tweets', tweetData, (response) => {
-      $newTweetForm[0].reset();
-      loadTweets('#tweets-container');
-    });
+  $("#form").keydown(function() {
+    $(".form-msg-box").slideUp();
   });
+
+  $("#form").submit(function(event) {
+    event.preventDefault();
+    const text = $("#tweet-text").val().trim();
+    
+    if (!text) {
+      $(".form-msg-box").slideDown();
+      $(".error-msg").text("A blank tweet? Let's try that again by adding some text.");
+      return;
+    }
+
+    if (text.length > 140) {
+      $(".form-msg-box").slideDown();
+      $(".error-msg").text("Text must be less than or equal to 140 characters.");
+      return;
+    }
+    
+    $.ajax({
+      url: "/tweets",
+      type: "post",
+      data: $("#form").serialize(),
+    })
+      .done(function() {
+        $("#tweet-text").val("");
+        $(".counter").text("140");
+        loadTweets();
+      });
+  });
+
+  const loadTweets = function() {
+    $.ajax("/tweets", { method: "GET" })
+      .then(function(data) {
+        renderTweets(data);
+      });
+  };
+
+  loadTweets();
 
 });

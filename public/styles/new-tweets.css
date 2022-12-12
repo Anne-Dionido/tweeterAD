@@ -3,25 +3,38 @@ form {
   flex-direction: column;
 }
 
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1em;
+}
+
 .button-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family:Bungee, sans-serif;
+  font-family: Bungee, sans-serif;
   font-size: 0.75em;
 }
 
-button {
-  font-size: 0.75em;
+.new-tweet button {
+  font-size: 1em;
   color: white;
   background-color: #4056A1;
   border: none;
+  cursor: pointer;
 }
 
-textarea {
+.new-tweet button:hover {
+  box-shadow: 2px 5px #888888;
+  text-shadow: 0.2px 0.2px rgb(79, 79, 136);
+}
+
+.new-tweet textarea {
   display: flex;
-  font-family:Source Sans Pro , sans-serif;
-  font-size: 0.5em;
+  font-family: Source Sans Pro, sans-serif;
+  font-size: .5em;
   font-weight: 600;
   margin-top: 30px;
   background-color: #f4f1ec;
@@ -32,4 +45,21 @@ textarea {
   height: 50px;
   margin-bottom: 20px;
   resize: none;
+}
+
+.tweet-text {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom: 5px, solid, black;
+  word-wrap: break-word;
+}
+
+#error-print {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: crimson;
+  font-size: 0.75em;
+  font-style: italic;
 }
