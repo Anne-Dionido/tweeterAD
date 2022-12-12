@@ -14,8 +14,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
-!["Screenshot of M-Version"] (https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/M-Version.PNG)
-!["Screenshot of Desktop Version"] (https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/Desktop-Version.PNG)
+!["Screenshot of M-Version"](https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/Desktop-Version.PNG?raw=true)
+!["Screenshot of Desktop Version"](https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/M-Version.PNG?raw=true)
 
 ## Dependencies
 
