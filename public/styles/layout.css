@@ -1,46 +1,36 @@
 html {
   box-sizing: border-box;
 }
-
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  font: inherit;
-}
-
-:root {
-  --primary-font: 'Source Sans Pro';
-  --secondary-font: 'Bungee';
-  --primary-font-color: #545149;
-  --secondary-font-color: #ffffff;
-  --primary-color: #001524;
-  --secondary-color: rgb(255, 107, 53);
-  --primary-bg-color: #001524;
-  --secondary-bg-color: #f4f1ec;
-  --primary-box-shadow: 0 0 5px 4px rgb(255 107 53 / 60%);
-}
-
 /*
  * Global layout stuff
  */
 
 body {
-  color: var(--primary-font-color);
-  background-color: var(--secondary-bg-color);
-  font-family: var(--primary-font, sans-serif);
-  font-size: 20px;
-}
-
-main.container {
   display: flex;
   flex-direction: column;
-  position: relative;
+  color: #090908;
+  background-color: #6C587B;
+  font-size: 20px;
+  font-weight: 400;
+  align-content: center;
+  align-items: center;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  font-family: "Source Sans Pro", sans-serif;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 90%;
-  margin: auto;
+  background-color: #6C587B;
+  margin-right: auto;
+  margin-left: auto ;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  padding-top: 20px ;
 }

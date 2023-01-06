@@ -1,21 +1,23 @@
-$(document).ready(function() {
+$(document).ready(function () {
+  console.log("Document's ready");
+  // --- our code goes here ---
+  // use input event, tweet-text is area where counter is
+  $("textarea").on("input", function() {
+    //max character count is 140
+    const maxCharacter = 140;
+    //const input character we can get using length
+    //using val(jquery) to get value of a textarea
+    let charCount = $(this).val().length;
+    //const counter should be max characters less inputted characters
+    let charactersLeft = maxCharacter - charCount;
 
-  $("#tweet-text").on("input", function() {
-    const maxLength = 140;
-    const tweetLength = $(this).val().length;
-    const textRemaining = maxLength - tweetLength;
+    let $counterButton = $(this).parent().find(".counter");
+    $counterButton.val(charactersLeft)
 
-    let counter = $('.maxCounter');
-    counter.html(textRemaining);
-    let currentCount = $('.currentCounter');
-    currentCount.html(maxLength);
-
-    if (textRemaining < 0) {
-      counter.css('color', '#FF0000');
-      currentCount.css('color', '#FF0000');
+    if (charactersLeft < 0) {
+      $counterButton.addClass("invalid");
     } else {
-      counter.css('color', '#000000');
-      currentCount.css('color', '#000000');
+      $counterButton.removeClass("invalid");
     }
   });
 });

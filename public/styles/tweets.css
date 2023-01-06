@@ -1,68 +1,66 @@
-main.container {
-  padding-bottom: 3em;
+#tweets-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  border-style: solid;
+  background-color: #cc93a3;
+  margin: 20px;
+}
+/* avatar image */
+.tweet img {
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 75px;
+  max-height: 75px;
+  height: auto;
+  width: auto;
+}
+
+.responses > i:hover {
+  color: goldenrod
+}
+
+/* affects @user id name */
+.user-handle {
+  color: #000000;
 }
 
 .tweet {
-  border: 3px solid;
-  padding: 0 0.5em;
-  margin-bottom: 2em;
+  width: 1300px;
+  height: 220px;
+  color: black;
+  border: solid black 5px;
+  margin: 10px;
 }
-
-.tweet:hover {
-  box-shadow: 5px 5px 0px 0px rgba(0, 78, 137, 0.2);
-}
-
-.tweet header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5em 0.5em;
-}
-
-header .left-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tweet-name {
-  margin-left: 0.5em;
-}
-
-.handle {
-  color: rgb(196, 194, 194);
-}
+ .tweet:hover {
+  box-shadow: 10px 10px rgb(62, 29, 147);
+ }
 
 .tweet-text {
-  padding: 1em 0.5em;
-  overflow-wrap: break-word;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 45px;
+  border-bottom: solid;
+  color: black;
+  font: black;
+  word-break: break-all;
 }
 
-.tweet-divider {
-  border-bottom: 3px solid;
-  padding: 0 0.5em;
-}
-
-article.tweet footer {
+.tweet-header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  font-size: 16px;
-  padding: 0.3em 0.5em 0;
-}
-
-.tweet-options {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  font-size: 23px;
+  margin: 10px;
 }
 
-.tweet-options i {
-  color: var(--secondary-color);
-  margin: 0.5em 0.5em 1.3em;
-}
-
-.tweet-options i:hover {
-  cursor: pointer;
-  color: var(--primary-color);
-  transition: box-shadow 200ms ease-in;
+.tweet-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 23px;
+  margin: 10px;
 }

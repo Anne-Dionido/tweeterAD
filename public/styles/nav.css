@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  height: 120px;
+  height: 90px;
   background-color: var(--primary-color);
   color: #fff;
   justify-content: space-between;
