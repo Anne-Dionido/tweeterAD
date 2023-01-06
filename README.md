@@ -14,9 +14,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
-(https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/TweeterHomePage.PNG)
-(https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/ErrorMessageTooMuchCharacters.PNG)
-(https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/TweeterHomePage.PNG)
+!["Screenshot of home page"](https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/TweeterHomePage.PNG)
+!["Screenshot of BlankTweet page"](https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/ErrorMessageTooMuchCharacters.PNG)
+!["Screenshot of longtweet page"](https://github.com/Anne-Dionido/tweeterAD/blob/master/docs/TweeterHomePage.PNG)
 
 
 ## Dependencies
