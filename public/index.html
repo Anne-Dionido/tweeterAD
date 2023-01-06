@@ -48,9 +48,9 @@
 <body>
   <!-- Top nav bar (fixed) -->
   <nav>
-    <span class="logo">tweeter</span>
+    <span class="logo"><strong>tweeter</strong></span>
     <div class="nav-right">
-      <button class="composer" aria-controls="form"><strong>Write</strong> a new tweet</button>
+      <button class="composer" aria-controls="form"><strong>Compose</strong> a new tweet</button>
       <i class="fa-solid fa-angles-down"></i>
     </div>
   </nav>
@@ -67,22 +67,30 @@
   </header>
 
       <!-- Page-specific (main) content here -->
-      <main class="container">
-        <section class="container new-tweet">
-          <form method="post" action="/tweets/" encytype="application/x-www-form-urlencoded" id="new-tweet">
-            <label class="form-label" for="tweet-text">What are you humming about?</label>
-            <textarea name="text" id="tweet-text"></textarea>
-            <div class="form-footer"> <button class="btn-item" type="submit" aria-controls="form">Tweet</button> <output name="counter" class="counter" for="tweet-text">140</output>
-            </div>
-          </form>
-        </section>
-        <section id="tweets-container">
-        </section>
-        <button class="back-to-top">
-          <i class="fa-solid fa-circle-chevron-up"></i>
-        </button>
-      </main>
-    
-    </body>
-    
-    </html>
+  <main class="container">
+    <section class="new-tweet">
+      <!-- <h2>ComposeTweet</h2> -->
+      <span id="error-message-noTweet" class="error-message-container">
+        <i class="fas fa-exclamation-triangle"></i>
+        Hey! Your tweet can't be blank! Say Something!
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+      <span id="error-message-tooManyCharacters" class="error-message-container">
+        <i class="fas fa-exclamation-triangle"></i>
+        Please reduce amount of characters before creating a new Tweet!
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+      <form method="post" action="/tweets" id="new-tweet-form">
+        <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
+        <div class="new-tweet-footer">
+          <button class="fa-light fa-rectangle-wide" type="submit" id="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </div>
+      </form>
+    </section>
+    <section id="tweets-container">
+    </section>
+  </main>
+</body>
+
+</html>
